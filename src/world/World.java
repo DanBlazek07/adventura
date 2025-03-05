@@ -24,7 +24,7 @@ public class World {
 
     public boolean loadLocation(){
         try {
-            BufferedReader br = new BufferedReader(new FileReader("src/rooms/rooms.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("src/world.rooms/world.rooms.txt"));
             String line = br.readLine();
             while (line != null){
                 String[] text = line.split("-");
