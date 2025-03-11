@@ -1,9 +1,12 @@
 package commands;
 
+import world.Location;
+
 public class Go extends Command {
+    private Location l;
     @Override
     public String execute() {
-        return "";
+        return "you went into the room" + l.getId();
     }
 
     @Override
