@@ -1,1 +1,1 @@
-pickaxe_gold
+pickaxe_gold,wall

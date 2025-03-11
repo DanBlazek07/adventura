@@ -1,17 +1,18 @@
 package commands;
 
+import items.Food;
+
 public class Eat extends Command {
-    private boolean hasFood = false;
-    private boolean needsToEat = false;
+    Food f = new Food();
 
     @Override
     public String execute() {
-        if (hasFood && needsToEat){
-            return "u ate ur food... yummy";
-        } else if (hasFood) {
-            return "u wanted to eat ur food but u realized ur not even hungry";
+        if (f.inventoryCheck() && f.hungerCheck()){
+            return "you ate your bread... yummy";
+        } else if (f.inventoryCheck()) {
+            return "you wanted to eat your bread but you realized you arent even hungry...";
         } else {
-            return "u wanted to eat, but u had nothing to eat...";
+            return "you wanted to eat, but you had nothing to eat...";
         }
     }
 

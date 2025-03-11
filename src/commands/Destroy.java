@@ -1,11 +1,13 @@
 package commands;
 
+import items.pick.Pickaxe;
+
 public class Destroy extends Command {
-    private boolean hasPickaxe = false;
+    Pickaxe p = new Pickaxe();
 
     @Override
     public String execute() {
-        if (hasPickaxe){
+        if (p.canDestroy()){
             return "wall destroyed";
         } else {
             return "u cant destroy the wall";

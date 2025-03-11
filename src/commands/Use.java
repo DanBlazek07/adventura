@@ -1,19 +1,19 @@
 package commands;
 
+import items.keys.*;
 import world.*;
 
 public class Use extends Command{
-    private boolean hasKey = false;
-    private boolean canUnlockDoor = false;
+    Key k = new Key();
     private Location location;
     @Override
     public String execute() {
-        if (hasKey && canUnlockDoor){
+        if (k.inventoryCheck() && k.canUnlock()){
             return "door to the room" + location.getId() + "unlocked";
-        } else if (hasKey) {
-            return "as hard as u tried, the door didnt open... try a different one";
+        } else if (k.inventoryCheck()) {
+            return "as hard as you tried, the door didnt open... try a different one...";
         } else {
-            return "u cant do anything";
+            return "you cant do anything...";
         }
     }
 
