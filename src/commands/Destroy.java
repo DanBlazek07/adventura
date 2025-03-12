@@ -10,7 +10,7 @@ public class Destroy extends Command {
         if (p.canDestroy()){
             return "wall destroyed";
         } else {
-            return "u cant destroy the wall";
+            return "you cant destroy the wall";
         }
     }
 
