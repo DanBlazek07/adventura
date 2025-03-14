@@ -1,8 +1,6 @@
 package commands;
 
-import commands.easterEggs.EasterEgg1;
-import commands.easterEggs.EasterEgg2;
-import commands.easterEggs.EasterEgg3;
+import commands.easterEggs.*;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -41,7 +39,7 @@ public class Console {
 
     private void run() {
         System.out.print("> ");
-        String command = sc.next();
+        String command = sc.nextLine();
         if (commands.containsKey(command.toLowerCase())) {
             System.out.println(commands.get(command.toLowerCase()).execute());
             exit = commands.get(command.toLowerCase()).exit();
