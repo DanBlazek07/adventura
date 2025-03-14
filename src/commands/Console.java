@@ -38,7 +38,7 @@ public class Console {
     }
 
     private void run() {
-        System.out.print("> ");
+        System.out.print("> Command: ");
         String command = sc.nextLine();
         if (commands.containsKey(command.toLowerCase())) {
             System.out.println(commands.get(command.toLowerCase()).execute());
@@ -50,6 +50,8 @@ public class Console {
 
     public void start() {
         initialize();
+        //jak se dělají barvy jsem se zeptal ChatGPT
+        System.out.println("\u001B[34m" + "commands: destroy, eat, pickup, talk, use, go, exit" + "\u001B[0m");
         do {
             run();
         } while (!exit);
