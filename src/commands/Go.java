@@ -1,12 +1,12 @@
 package commands;
 
-import world.Location;
+import world.*;
 
 public class Go extends Command {
-    private Location l;
+    private World w = new World();
     @Override
     public String execute() {
-        return null;
+        return w.loadLocation();
     }
 
     @Override
