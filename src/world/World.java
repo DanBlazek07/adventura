@@ -9,6 +9,7 @@ public class World {
     private HashMap<Integer, Location> world = new HashMap<>();
     private Location location;
     private int current;
+    private String f = null;
 
     public World() {
         loadLocation();
@@ -31,15 +32,17 @@ public class World {
                 String[] text = line.split("-");
                 Location l = new Location(Integer.parseInt(text[0]), text[1], locations(text[2]));
             }
-            String f = null;
-            ArrayList<Integer> fn = world.get(current).getLoc();
-            for (int i = 0; i < fn.size(); i++){
-                f = world.get(fn.get(i)).getId() + world.get(fn.get(i)).getName();
-            }
-            return "you can go into: " + f;
+            return "successfully read";
         } catch (IOException e) {
-            return null;
+            return "something failed";
         }
+    }
+    public String closeRooms(){
+        ArrayList<Integer> fn = world.get(current).getLoc();
+        for (int i = 0; i < fn.size(); i++){
+            f = world.get(fn.get(i)).getId() + world.get(fn.get(i)).getName();
+        }
+        return f;
     }
 
     private int[] locations(String locations){
@@ -49,5 +52,13 @@ public class World {
             locationss[i] = Integer.parseInt(location[i]);
         }
         return locationss;
+    }
+
+    public String move(int Id){
+        if (world.get(current).getLoc().contains(Id) && world.containsKey(current)){
+            current = Id;
+            return world.get(current).inside();
+        }
+        return "failed to move";
     }
 }

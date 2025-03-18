@@ -55,4 +55,9 @@ public class Location {
     public void setItem(ArrayList<String> item) {
         this.item = item;
     }
+
+    public String inside(){
+        String moved = "moved";
+        return moved;
+    }
 }
