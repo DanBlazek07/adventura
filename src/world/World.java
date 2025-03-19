@@ -13,6 +13,7 @@ public class World {
 
     public World() {
         loadLocation();
+        current = 0;
         location = world.get(0);
     }
 
@@ -27,8 +28,8 @@ public class World {
     public String loadLocation(){
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/world/rooms/rooms.txt"));
-            String line = br.readLine();
-            while (line != null){
+            String line;
+            while ((line = br.readLine())!= null){
                 String[] text = line.split("-");
                 Location l = new Location(Integer.parseInt(text[0]), text[1], locations(text[2]));
             }
@@ -48,7 +49,7 @@ public class World {
     private int[] locations(String locations){
         String[] location = locations.split(",");
         int[] locationss = new int[locations.length()];
-        for (int i = 0; i < locations.length(); i++) {
+        for (int i = 0; i < location.length-1; i++) {
             locationss[i] = Integer.parseInt(location[i]);
         }
         return locationss;
@@ -59,6 +60,7 @@ public class World {
             current = Id;
             return world.get(current).inside();
         }
+        current = 0;
         return "failed to move";
     }
 }

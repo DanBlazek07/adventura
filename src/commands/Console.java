@@ -32,6 +32,8 @@ public class Console {
         commands.put("u", use);
         commands.put("exit", exit);
         commands.put("quit", exit);
+        commands.put("kys", exit);
+        commands.put("kms", exit);
         commands.put("tasemnice", new EasterEgg1());
         commands.put("easter egg", new EasterEgg2());
         commands.put("flammenwerfer", new EasterEgg3());
@@ -44,14 +46,14 @@ public class Console {
             System.out.println(commands.get(command.toLowerCase()).execute());
             exit = commands.get(command.toLowerCase()).exit();
         } else {
-            System.out.println("ur unable to write commands, skill issue");
+            System.out.println("\u001B[31mur unable to write commands, skill issue\u001B[0m");
         }
     }
 
     public void start() {
         initialize();
         //jak se dělají barvy jsem se zeptal ChatGPT
-        System.out.println("\u001B[34m" + "commands: destroy, eat, pickup, talk, use, go, exit" + "\u001B[0m");
+        System.out.println("\u001B[40m\u001B[34mcommands: destroy, eat, pickup, talk, use, go, exit\u001B[0m");
         do {
             run();
         } while (!exit);
