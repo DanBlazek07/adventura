@@ -11,12 +11,13 @@ public class Go extends Command {
     @Override
     public String execute() {
         String s = sc.nextLine();
-        switch (Integer.parseInt(s)) {
-            case 1,2,3,4,5,6,7,8,9,10: w.move(Integer.parseInt(s));
-            default: System.out.println("Invalid command");
+        int value = Integer.parseInt(s);
+        if (value > 0 && value < 12) {
+            System.out.println("you can move to: " + w.closeRooms(value));
+            return w.move(value);
         }
-        System.out.println("you can move to: " + w.closeRooms() + "\nselect a room: ");
-        return w.move(Integer.parseInt(s));
+        sc.close();
+        return "Invalid command";
     }
 
     @Override

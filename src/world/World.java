@@ -32,16 +32,23 @@ public class World {
             while ((line = br.readLine())!= null){
                 String[] text = line.split("-");
                 Location l = new Location(Integer.parseInt(text[0]), text[1], locations(text[2]));
+                System.out.println(text[2]);
+                world.put(Integer.parseInt(text[0]), l);
             }
             return "successfully read";
         } catch (IOException e) {
             return "something failed";
         }
     }
-    public String closeRooms(){
-        ArrayList<Integer> fn = world.get(current).getLoc();
-        for (int i = 0; i < fn.size(); i++){
-            f = world.get(fn.get(i)).getId() + world.get(fn.get(i)).getName();
+    public String closeRooms(int destination){
+        if(world.containsKey(destination)){
+            ArrayList<Integer> fn;
+            fn = world.get(destination).getLoc(); //null
+            System.out.println(fn + "init");
+            world.get(destination).setLoc(fn);
+            System.out.println(fn + "set");
+            fn.add(destination);
+            System.out.println(fn + "add");
         }
         return f;
     }
@@ -49,14 +56,15 @@ public class World {
     private int[] locations(String locations){
         String[] location = locations.split(",");
         int[] locationss = new int[locations.length()];
-        for (int i = 0; i < location.length-1; i++) {
+        for (int i = 0; i < location.length; i++) {
             locationss[i] = Integer.parseInt(location[i]);
+            System.out.println(location[i]);
         }
         return locationss;
     }
 
     public String move(int Id){
-        if (world.get(current).getLoc().contains(Id) && world.containsKey(current)){
+        if (world.containsKey(current) && world.get(current).getLoc().contains(Id)){
             current = Id;
             return world.get(current).inside();
         }

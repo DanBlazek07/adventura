@@ -44,8 +44,9 @@ public class Location {
         return loc;
     }
 
-    public void setLoc(ArrayList<Integer> loc) {
+    public boolean setLoc(ArrayList<Integer> loc) {
         this.loc = loc;
+        return false;
     }
 
     public ArrayList<String> getItem() {

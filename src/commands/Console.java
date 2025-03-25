@@ -46,10 +46,9 @@ public class Console {
             System.out.println(commands.get(command.toLowerCase()).execute());
             exit = commands.get(command.toLowerCase()).exit();
         } else {
-            System.out.println("\u001B[31mur unable to write commands, skill issue\u001B[0m");
+            System.out.println("\u001B[31myou are unable to write commands, skill issue\u001B[0m");
         }
     }
-
     public void start() {
         initialize();
         //jak se dělají barvy jsem se zeptal ChatGPT
@@ -57,5 +56,6 @@ public class Console {
         do {
             run();
         } while (!exit);
+        sc.close();
     }
 }
