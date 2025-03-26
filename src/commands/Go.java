@@ -10,14 +10,19 @@ public class Go extends Command {
 
     @Override
     public String execute() {
-        String s = sc.nextLine();
-        int value = Integer.parseInt(s);
-        if (value > 0 && value < 12) {
-            System.out.println("you can move to: " + w.closeRooms(value));
-            return w.move(value);
+        try {
+            String s = sc.nextLine();
+            int value = Integer.parseInt(s);
+            if (value > 0 && value < 12) {
+                System.out.println("previous nearby rooms: " + w.closeRooms());
+                return w.move(value);
+            }
+            sc.close();
+            return "Invalid command";
+        } catch (Exception e) {
+            return "But why";
         }
-        sc.close();
-        return "Invalid command";
+
     }
 
     @Override

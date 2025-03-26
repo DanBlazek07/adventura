@@ -34,28 +34,41 @@ public class Console {
         commands.put("quit", exit);
         commands.put("kys", exit);
         commands.put("kms", exit);
+        commands.put("exitus", exit);
         commands.put("tasemnice", new EasterEgg1());
         commands.put("easter egg", new EasterEgg2());
         commands.put("flammenwerfer", new EasterEgg3());
+        commands.put("programming", new EasterEgg4());
     }
 
     private void run() {
-        System.out.print("> Command: ");
-        String command = sc.nextLine();
-        if (commands.containsKey(command.toLowerCase())) {
-            System.out.println(commands.get(command.toLowerCase()).execute());
-            exit = commands.get(command.toLowerCase()).exit();
-        } else {
-            System.out.println("\u001B[31myou are unable to write commands, skill issue\u001B[0m");
+        try {
+            System.out.print("> Command: ");
+            String command = sc.nextLine();
+            if (commands.containsKey(command.toLowerCase())) {
+                System.out.println(commands.get(command.toLowerCase()).execute());
+                exit = commands.get(command.toLowerCase()).exit();
+            } else {
+                System.out.println("\u001B[31myou are unable to write commands, skill issue\u001B[0m");
+            }
+        } catch (Exception e) {
+            System.out.println("no thank u");
+            throw e;
         }
     }
+
     public void start() {
-        initialize();
-        //jak se dělají barvy jsem se zeptal ChatGPT
-        System.out.println("\u001B[40m\u001B[34mcommands: destroy, eat, pickup, talk, use, go, exit\u001B[0m");
-        do {
-            run();
-        } while (!exit);
-        sc.close();
+        try {
+            initialize();
+            //jak se dělají barvy jsem se zeptal ChatGPT
+            System.out.println("\u001B[40m\u001B[34mcommands: destroy, eat, pickup, talk, use, go, exit\u001B[0m");
+            do {
+                run();
+            } while (!exit);
+            sc.close();
+        } catch (Exception e) {
+            System.out.println("failed");
+        }
+
     }
 }

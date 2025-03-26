@@ -1,4 +1,5 @@
 package world;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,23 +14,23 @@ public class World {
 
     public World() {
         loadLocation();
-        current = 0;
-        location = world.get(0);
+        current = 1;
+        location = world.get(current);
     }
 
     public String getLocation() {
         return location.getName();
     }
 
-    public int getId(){
+    public int getId() {
         return location.getId();
     }
 
-    public String loadLocation(){
+    public String loadLocation() {
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/world/rooms/rooms.txt"));
             String line;
-            while ((line = br.readLine())!= null){
+            while ((line = br.readLine()) != null) {
                 String[] text = line.split("-");
                 Location l = new Location(Integer.parseInt(text[0]), text[1], locations(text[2]));
                 System.out.println(text[2]);
@@ -40,31 +41,23 @@ public class World {
             return "something failed";
         }
     }
-    public String closeRooms(int destination){
-        if(world.containsKey(destination)){
-            ArrayList<Integer> fn;
-            fn = world.get(destination).getLoc(); //null
-            System.out.println(fn + "init");
-            world.get(destination).setLoc(fn);
-            System.out.println(fn + "set");
-            fn.add(destination);
-            System.out.println(fn + "add");
-        }
-        return f;
+
+    public String closeRooms() {
+        return world.get(current).getLocString();
     }
 
-    private int[] locations(String locations){
+    private ArrayList<Integer> locations(String locations) {
         String[] location = locations.split(",");
-        int[] locationss = new int[locations.length()];
+        ArrayList<Integer> locationss = new ArrayList<>();
         for (int i = 0; i < location.length; i++) {
-            locationss[i] = Integer.parseInt(location[i]);
+            locationss.add(Integer.parseInt(location[i]));
             System.out.println(location[i]);
         }
         return locationss;
     }
 
-    public String move(int Id){
-        if (world.containsKey(current) && world.get(current).getLoc().contains(Id)){
+    public String move(int Id) {
+        if (world.containsKey(current) && world.get(current).getLoc().contains(Id)) {
             current = Id;
             return world.get(current).inside();
         }

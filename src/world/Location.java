@@ -6,7 +6,7 @@ public class Location {
     private String name;
     private int id;
     private int[] locations;
-    private ArrayList<Integer> loc = new ArrayList<>();
+    private ArrayList<Integer> loc;
     private ArrayList<String> item = new ArrayList<>();
 
     public String getName() {
@@ -21,10 +21,11 @@ public class Location {
         return locations;
     }
 
-    public Location(int id, String name, int[] locations) {
+    public Location(int id, String name, ArrayList<Integer> locations) {
         this.name = name;
         this.id = id;
-        this.locations = locations;
+        this.loc = locations;
+
     }
 
     private boolean rooms(String[] var){
@@ -40,6 +41,14 @@ public class Location {
         }
         return false;
     }
+    public String getLocString() {
+        String x = "";
+        for (int i = 0; i < loc.size(); i++){
+            x += loc.get(i) + ",";
+        }
+        return x;
+    }
+
     public ArrayList<Integer> getLoc() {
         return loc;
     }
