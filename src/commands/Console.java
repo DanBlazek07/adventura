@@ -11,6 +11,9 @@ public class Console {
     private boolean exit = false;
     private HashMap<String, Command> commands;
 
+    /**
+     * makes all commands to know that they should run
+     **/
     public void initialize() {
         Destroy destroy = new Destroy();
         Eat eat = new Eat();
@@ -41,6 +44,9 @@ public class Console {
         commands.put("programming", new EasterEgg4());
     }
 
+    /**
+     * takes care of what main gives out
+     **/
     private void run() {
         try {
             System.out.print("> Command: ");
@@ -57,10 +63,13 @@ public class Console {
         }
     }
 
+    /**
+     * starts up the game, writes command list
+     **/
     public void start() {
         try {
             initialize();
-            //jak se dělají barvy jsem se zeptal ChatGPT
+            //how to do colors I asked ChatGPT
             System.out.println("\u001B[40m\u001B[34mcommands: destroy, eat, pickup, talk, use, go, exit\u001B[0m");
             do {
                 run();

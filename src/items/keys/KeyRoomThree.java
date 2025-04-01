@@ -1,6 +1,9 @@
 package items.keys;
 
 public class KeyRoomThree extends Key {
+    /**
+     * writes out some text after unlocking the room
+     **/
     public String roomThreeUnlock(){
         if (canUnlock()){
             return "as the key to room 3 entered the keyhole, it felt weird... \nalmost as if though someone, or something, was contacting you...";

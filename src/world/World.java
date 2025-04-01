@@ -26,6 +26,9 @@ public class World {
         return location.getId();
     }
 
+    /**
+     * loads the location
+     **/
     public String loadLocation() {
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/world/rooms/rooms.txt"));
@@ -42,10 +45,16 @@ public class World {
         }
     }
 
+    /**
+     * prints out nearby rooms
+     **/
     public String closeRooms() {
         return world.get(current).getLocString();
     }
 
+    /**
+     * splits locations player can move into
+     **/
     private ArrayList<Integer> locations(String locations) {
         String[] location = locations.split(",");
         ArrayList<Integer> locationss = new ArrayList<>();
@@ -56,6 +65,9 @@ public class World {
         return locationss;
     }
 
+    /**
+     * moves the player accordingly
+     **/
     public String move(int Id) {
         if (world.containsKey(current) && world.get(current).getLoc().contains(Id)) {
             current = Id;

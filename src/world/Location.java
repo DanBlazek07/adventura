@@ -28,6 +28,9 @@ public class Location {
 
     }
 
+    /**
+     * checks what is in the room and how are rooms connected
+     **/
     private boolean rooms(String[] var){
         String[] connection = var[2].split(",");
         String[] items = var[0].split("");
@@ -41,6 +44,10 @@ public class Location {
         }
         return false;
     }
+
+    /**
+     * prints out locations
+     **/
     public String getLocString() {
         String x = "";
         for (int i = 0; i < loc.size(); i++){
@@ -66,6 +73,9 @@ public class Location {
         this.item = item;
     }
 
+    /**
+     * checks player is inside
+     **/
     public String inside(){
         String moved = "moved";
         return moved;
