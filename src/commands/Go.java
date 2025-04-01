@@ -18,9 +18,9 @@ public class Go extends Command {
                 return w.move(value);
             }
             sc.close();
-            return "Invalid command";
+            return "\u001B[31mInvalid command\u001B[0m";
         } catch (Exception e) {
-            return "But why";
+            return "\u001B[31mBut why\u001B[0m";
         }
 
     }

@@ -58,7 +58,7 @@ public class Console {
                 System.out.println("\u001B[31myou are unable to write commands, skill issue\u001B[0m");
             }
         } catch (Exception e) {
-            System.out.println("no thank u");
+            System.out.println("\u001B[31mno thank u\u001B[0m");
             throw e;
         }
     }
@@ -76,7 +76,7 @@ public class Console {
             } while (!exit);
             sc.close();
         } catch (Exception e) {
-            System.out.println("failed");
+            System.out.println("\u001B[31mfailed\u001B[0m");
         }
 
     }

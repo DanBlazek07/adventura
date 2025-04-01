@@ -41,7 +41,7 @@ public class World {
             }
             return "successfully read";
         } catch (IOException e) {
-            return "something failed";
+            return "\u001B[31msomething failed\u001B[0m";
         }
     }
 
@@ -74,6 +74,6 @@ public class World {
             return world.get(current).inside();
         }
         current = 0;
-        return "failed to move";
+        return "\u001B[31mfailed to move\u001B[0m";
     }
 }
