@@ -30,8 +30,7 @@ public class World {
      * loads the location
      **/
     public String loadLocation() {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("src/world/rooms/rooms.txt"));
+        try (BufferedReader br = new BufferedReader(new FileReader("rooms/rooms.txt"))){
             String line;
             while ((line = br.readLine()) != null) {
                 String[] text = line.split("-");
@@ -69,11 +68,10 @@ public class World {
      * moves the player accordingly
      **/
     public String move(int Id) {
-        if (world.containsKey(current) && world.get(current).getLoc().contains(Id)) {
+        if (world.containsKey(Id) && world.get(current).getLoc().contains(Id)) {
             current = Id;
             return world.get(current).inside();
         }
-        current = 0;
         return "\u001B[31mfailed to move\u001B[0m";
     }
 }

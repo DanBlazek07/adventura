@@ -5,16 +5,16 @@ import world.*;
 import java.util.Scanner;
 
 public class Go extends Command {
-    private World w = new World();
-    private Scanner sc = new Scanner(System.in);
+    private World w;
+    private Scanner sc;
 
     @Override
     public String execute() {
+        System.out.println("rooms: " + w.closeRooms());
+        String s = sc.nextLine();
         try {
-            String s = sc.nextLine();
             int value = Integer.parseInt(s);
             if (value > 0 && value < 12) {
-                System.out.println("previous nearby rooms: " + w.closeRooms());
                 return w.move(value);
             }
             sc.close();
@@ -28,5 +28,10 @@ public class Go extends Command {
     @Override
     public boolean exit() {
         return false;
+    }
+
+    public Go(World w) {
+        this.w = w;
+        sc = new Scanner(System.in);
     }
 }
