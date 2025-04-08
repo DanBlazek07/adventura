@@ -1,17 +1,25 @@
 package commands;
-
-import items.pick.Pickaxe;
+import items.*;
+import items.pick.*;
+import world.World;
 
 public class Destroy extends Command {
-    Pickaxe p = new Pickaxe();
+    public Destroy(Player player, World world) {
+        this.player = player;
+        this.world = world;
+    }
 
     @Override
     public String execute() {
-        if (p.canDestroy()){
-            return "wall destroyed";
-        } else {
-            return "you cant destroy the wall";
+        Inventory inv = player.getInventory();
+        Item item = inv.getInventory("pickaxe");
+        if (item instanceof Pickaxe) {
+            Pickaxe pick = (Pickaxe) item;
+            if (pick.canDestroy()){
+                return world.breakWall();
+            }return "you cant destroy the wall";
         }
+        return "but you dont own anything to destroy with...";
     }
 
     @Override

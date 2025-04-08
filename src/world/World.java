@@ -10,7 +10,6 @@ public class World {
     private HashMap<Integer, Location> world = new HashMap<>();
     private Location location;
     private int current;
-    private String f = null;
 
     public World() {
         loadLocation();
@@ -24,6 +23,14 @@ public class World {
 
     public int getId() {
         return location.getId();
+    }
+    public String breakWall(){
+        if (location.existsWall()) {
+            location.breakWall();
+            return "there is no longer a wall";
+        } else {
+            return "there was never a wall to destroy here.";
+        }
     }
 
     /**

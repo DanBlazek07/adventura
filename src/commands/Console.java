@@ -1,6 +1,7 @@
 package commands;
 
 import commands.easterEggs.*;
+import items.Player;
 import world.World;
 
 import java.util.HashMap;
@@ -12,15 +13,17 @@ public class Console {
     private Scanner sc = new Scanner(System.in);
     private boolean exit = false;
     private HashMap<String, Command> commands;
+    private Player player;
     private World world;
 
     /**
      * makes all commands to know that they should run
      **/
     public void initialize() {
-        Destroy destroy = new Destroy();
+        player = new Player();
+        Destroy destroy = new Destroy(player,world);
         Eat eat = new Eat();
-        Pickup pickup = new Pickup();
+        Pickup pickup = new Pickup(player,world);
         Talk talk = new Talk();
         Use use = new Use();
         Exit exit = new Exit();
@@ -61,9 +64,9 @@ public class Console {
             } else {
                 System.out.println("\u001B[31myou are unable to write commands, skill issue\u001B[0m");
             }
-        } catch (Exception e) {
-            System.out.println("\u001B[31mno thank u\u001B[0m");
-            throw e;
+        } catch (NoSuchElementException | IllegalStateException e){
+            System.out.println("\u001B[31msomething went slightly wrong\u001B[0m");
+            exit = true;
         }
     }
 
@@ -75,11 +78,7 @@ public class Console {
         //how to do colors I asked ChatGPT
         System.out.println("\u001B[40m\u001B[34mcommands: destroy, eat, pickup, talk, use, go, exit\u001B[0m");
         do {
-            try {
-                run();
-            } catch (NoSuchElementException e) {
-                System.out.println("\u001B[31mfailed\u001B[0m");
-            }
+            run();
         } while (!exit);
         sc.close();
     }

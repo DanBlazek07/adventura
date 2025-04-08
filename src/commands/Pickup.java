@@ -1,23 +1,25 @@
 package commands;
 
+import items.Player;
+import world.Location;
+import world.World;
+
 public class Pickup extends Command {
-    private boolean isFood = false;
-    private boolean isWPick = false;
-    private boolean isGPick = false;
-    private boolean isKey = false;
+    public Pickup(Player player, World world) {
+        this.player = player;
+        this.world = world;
+    }
+
     @Override
     public String execute() {
-            if (isFood){
-                return "you picked up bread, it doesnt look the most delicious, but it is what it is";
-            } else if (isWPick){
-                return "you picked up wooden pickaxe, looks like its about to break anytime...";
-            } else if (isGPick){
-                return "you picked up golden pickaxe, shiny and cold to touch";
-            } else if (isKey) {
-                return "you picked up key, what room could it be for?";
-            } else {
-                return "there is nothing for you to pick up...";
-            }
+//        Location location = ;
+//        if (location.isLocked())
+        return "you picked up bread, it doesnt look the most delicious, but it is what it is";
+//        return "you picked up wooden pickaxe, looks like its about to break anytime...";
+//        return "you picked up golden pickaxe, shiny and cold to touch";
+//        return "you picked up key, what room could it be for?";
+//        return "there is nothing for you to pick up...";
+
     }
 
     @Override
